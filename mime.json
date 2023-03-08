@@ -1,0 +1,11 @@
+{
+    ".a": "application/octet-stream",
+    ".json":"application/json",
+    ".txt":"text/plain",
+    ".csv":"text/csv",
+    ".png":"image/png",
+    ".html":"text/html",
+    ".css":"text/css",
+    ".js":"text/js",
+    ".ico":"image/vnd.microsoft.icon"
+}
