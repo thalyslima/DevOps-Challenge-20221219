@@ -28,12 +28,11 @@
 "build": "react-scripts --openssl-legacy-provider build",
 6. Depois de testado local, rodar o comando para gerar a pasta build: npm run build
 7. Editar o arquivo build/index.html, retirando o path /calculator/ de todas os caminhos
-8. Para AWS -> cd terraform-aws -> configurar credentials
+8. Para AWS -> cd terraform-aws -> configurar as credenciais localmente -> alterar o caminho do arquivo credentials na linha 12 do main.tf
 9. Para Azure -> cd terraform-azure -> az login --tenant
 10. Rodar o comando para inicializar o terraform: terraform init
 11. Rodar o comando terraform plan e verificar os recursos a serem adicionados
-12 .Verificar os arquivos no provedor de cloud escolhido
-13. Acessar a url e testar a calculadora:
+12. Acessar a url e testar a calculadora:
 AWS -> acessar o bucket -> propriedades -> rolar para o final da página até Static website hosting e acessar Bucket website endpoint
 Azure -> acessar o grupo de recursos -> ir no storage criado -> no item Data management, clicar em Static website e abrir o endpoint
-14. Rodar o comando terraform destroy para deletar os recursos
+13. Rodar o comando terraform destroy para deletar os recursos
