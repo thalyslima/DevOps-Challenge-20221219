@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "devops_challenge_bucket" {
-  bucket = "devops-challenge-2023030703"
+  bucket = "devops-challenge-2023030704"
   
   website {
     index_document = "index.html"
