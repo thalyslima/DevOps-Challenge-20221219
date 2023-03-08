@@ -2,21 +2,6 @@
 
 ## Como criar um site estático utilizando AWS S3 ou Azure Storage, através do Terraform.
 
-## Como instalar e utilizar o projeto
-1. Para clonar repositório com o conteúdo do submodule, utilizar o comando: git clone --recursive https://github.com/thalyslima/devops-challenge-20221219.git
-2. 
-3. 
-4. 
-5. 
-6. Para AWS -> cd terraform-aws -> configurar credentials
-7. Para Azure -> cd terraform-azure -> az login --tenant
-8. Rodar o comando para inicializar o terraform: terraform init
-9. Rodar o comando terraform plan e verificar os recursos (deverão aparecer 18 recursos para adicionar)
-10 .Verificar os arquviso no provedor de cloud escolhido
-11. Acessar a url e testar a calculadora:
-12. AWS -> acessar o bucket -> propriedades -> rolar para o final da página até Static website hosting e acessar Bucket website endpoint
-13. Azure -> acessar o grupo de recursos -> ir no storage criado -> no item Data management, clicar em Static website e abrir o endpoint
-
 ## Fluxo do projeto
 
 ### Parte 1 - Build
@@ -27,7 +12,28 @@
 5. Teste local com npm start e criado a pasta build em seguida
 
 ### Parte 2 - Deploy
-1. Criado arquivo main.tf para configurar as instruções do terraform
-2. Configure aws credentials file
-3. 
+1. Criado arquivo main.tf e adicionado as instruções do terraform
+2. Configurado as credentials da AWS, através da chave gerada no console 
+3. Configurado azure cli, para realizar login localmente
+4. Realizado configurações necessárias para subir o projeto
+5. Iniciado projeto com terraform e realizado deploy nos provedores
 
+## Como instalar e utilizar o projeto
+1. Para clonar repositório com o conteúdo do submodule, utilizar o comando: git clone --recursive url
+2. Acessar a pasta do projeto: cd calculator
+3. Rodar o comando para instalar o npm: npm install 
+4. Rodar o comando para testar o projeto localmente: npm start
+5. Caso apresente o erro "opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ]" alterar as linhas 19 e 20 do package.json para: 
+"start": "react-scripts --openssl-legacy-provider start", 
+"build": "react-scripts --openssl-legacy-provider build",
+6. Depois de testado local, rodar o comando para gerar a pasta build: npm run build
+7. Editar o arquivo build/index.html, retirando o path /calculator/ de todas os caminhos
+8. Para AWS -> cd terraform-aws -> configurar credentials
+9. Para Azure -> cd terraform-azure -> az login --tenant
+10. Rodar o comando para inicializar o terraform: terraform init
+11. Rodar o comando terraform plan e verificar os recursos a serem adicionados
+12 .Verificar os arquivos no provedor de cloud escolhido
+13. Acessar a url e testar a calculadora:
+AWS -> acessar o bucket -> propriedades -> rolar para o final da página até Static website hosting e acessar Bucket website endpoint
+Azure -> acessar o grupo de recursos -> ir no storage criado -> no item Data management, clicar em Static website e abrir o endpoint
+14. Rodar o comando terraform destroy para deletar os recursos
