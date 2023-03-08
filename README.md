@@ -21,9 +21,10 @@
 ## Como instalar e utilizar o projeto
 1. Para clonar repositório com o conteúdo do submodule, utilizar o comando: git clone --recursive url
 2. Acessar a pasta do projeto: cd calculator
-3. Rodar o comando para instalar o npm: npm install 
+3. Rodar o comando para instalar o npm: npm install
+4. Adicionar versão compatível do node, rodando o comando nvm use 16.8.0 e depois nvm use 16.8.0
 4. Rodar o comando para testar o projeto localmente: npm start
-5. Caso apresente o erro "opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ]" alterar as linhas 19 e 20 do package.json para: 
+5. Caso esteja utilizando uma versão do node 17+, alterar as linhas 19 e 20 do package.json para: 
 "start": "react-scripts --openssl-legacy-provider start", 
 "build": "react-scripts --openssl-legacy-provider build",
 6. Depois de testado local, rodar o comando para gerar a pasta build: npm run build
