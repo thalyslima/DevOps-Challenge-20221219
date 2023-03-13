@@ -29,29 +29,36 @@ locals {
   mime_types = jsondecode(file("../mime.json"))
 }
 
+resource "aws_s3_bucket_object" "devops_challenge_index" {
+  bucket = aws_s3_bucket.devops_challenge_bucket.id
+  key    = "index.html"
+  source = "../calculator/build/index.html"
+  content_type = "x-amz-website-redirect-location/calculator/"
+}
+
 resource "aws_s3_bucket_object" "devops_challenge_object" {
   for_each = fileset("../calculator/build/", "*")
 
   bucket = aws_s3_bucket.devops_challenge_bucket.id
-  key    = "${each.value}"
+  key    = "calculator/${each.value}"
   source = "../calculator/build/${each.value}"
-  content_type =  lookup(local.mime_types, regex("\\.[^.]+$", each.value), null)
+  content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.value), null)
 }
 
 resource "aws_s3_bucket_object" "devops_challenge_object_css" {
   for_each = fileset("../calculator/build/static/css", "*")
 
   bucket = aws_s3_bucket.devops_challenge_bucket.id
-  key    = "static/css/${each.value}"
+  key    = "calculator/static/css/${each.value}"
   source = "../calculator/build/static/css/${each.value}"
-  content_type =  lookup(local.mime_types, regex("\\.[^.]+$", each.value), null)
+  content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.value), null)
 }
 
 resource "aws_s3_bucket_object" "devops_challenge_object_js" {
   for_each = fileset("../calculator/build/static/js", "*")
 
   bucket = aws_s3_bucket.devops_challenge_bucket.id
-  key    = "static/js/${each.value}"
+  key    = "calculator/static/js/${each.value}"
   source = "../calculator/build/static/js/${each.value}"
-  content_type =  lookup(local.mime_types, regex("\\.[^.]+$", each.value), null)
+  content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.value), null)
 }

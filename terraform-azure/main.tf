@@ -36,7 +36,7 @@ locals {
 resource "azurerm_storage_blob" "storage_blob" {
   for_each = fileset("../calculator/build/", "*")
 
-  name = "${each.value}"
+  name = "calculator/${each.value}"
   storage_account_name   = azurerm_storage_account.storage_account.name
   storage_container_name = "$web"
   type                   = "Block"
@@ -47,7 +47,7 @@ resource "azurerm_storage_blob" "storage_blob" {
 resource "azurerm_storage_blob" "storage_blob_css" {
   for_each = fileset("../calculator/build/static/css", "*")
 
-  name = "static/css/${each.value}"
+  name = "calculator/static/css/${each.value}"
   storage_account_name   = azurerm_storage_account.storage_account.name
   storage_container_name = "$web"
   type                   = "Block"
@@ -58,7 +58,7 @@ resource "azurerm_storage_blob" "storage_blob_css" {
 resource "azurerm_storage_blob" "storage_blob_js" {
   for_each = fileset("../calculator/build/static/js", "*")
 
-  name = "static/js/${each.value}"
+  name = "calculator/static/js/${each.value}"
   storage_account_name   = azurerm_storage_account.storage_account.name
   storage_container_name = "$web"
   type                   = "Block"
