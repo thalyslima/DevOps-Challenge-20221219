@@ -1,6 +1,6 @@
 # DevOps Challenge 20221219
 
-## Como criar um site estático utilizando AWS S3 ou Azure Storage, através do Terraform.
+## Como criar um site estático utilizando AWS S3 ou Azure Storage, com o Terraform.
 
 ## Fluxo do projeto
 
